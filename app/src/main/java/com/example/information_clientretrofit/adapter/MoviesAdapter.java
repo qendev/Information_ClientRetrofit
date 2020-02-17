@@ -4,6 +4,7 @@ package com.example.information_clientretrofit.adapter;
 * on 14th 2020*/
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,14 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
 
     private List<Movie> movies;
-    private Context context;
 
-    public MoviesAdapter(MainActivity mainActivity, List<Movie> movies) {
+    public MoviesAdapter( List<Movie> movies) {
+
+        this.movies=movies;
+
     }
+
+
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -55,13 +60,16 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         holder.title.setText(movie.getTitle());
         holder.director.setText(movie.getDirector());
         holder.description.setText(movie.getDescription());
+
+
     }
 
 
 
     @Override
     public int getItemCount() {
-        return movies.size();
+
+        return  movies == null ? 0 : movies.size();
     }
 }
 
