@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        moviesAdapter = new MoviesAdapter(MainActivity.this, movies);
-        recyclerView.setAdapter(moviesAdapter);
+
 
         getMovies();
     }
@@ -58,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
                     for(Movie movie: response.body()){
                         movies.add(movie);
                     }
-                    moviesAdapter.notifyDataSetChanged();
+                    moviesAdapter = new MoviesAdapter( movies);
+                    recyclerView.setAdapter(moviesAdapter);
                 }else{
                     Log.e(TAG, response.message());
                 }
